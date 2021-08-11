@@ -55,10 +55,10 @@ start_span(Ctx, Name, Opts, Processors, InstrumentationLibrary) ->
             Span2 = Processors(Ctx, Span1),
             _ = storage_insert(Span2),
             SpanCtx;
-        {SpanCtx, Span=#span{}} ->
+        {SpanCtx, #span{}} ->
             %% span isn't recorded so don't run processors
             %% but we do insert to ets table?
-            _ = storage_insert(Span),
+            %% _ = storage_insert(Span),
             SpanCtx
     end.
 
